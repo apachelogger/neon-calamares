@@ -37,7 +37,7 @@ Vcs-Browser: https://packaging.neon.kde.org/neon-packaging/calamares.git/
 
 Package: calamares
 Architecture: any
-Depends: e2fsprogs (>= 1.43),
+Depends: e2fsprogs (>= 1.42.13),
          kpmcore | libkpmcore3,
          os-prober,
          ${misc:Depends},
