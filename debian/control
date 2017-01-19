@@ -40,6 +40,7 @@ Architecture: any
 Depends: e2fsprogs (>= 1.42.13),
          kpmcore | libkpmcore3,
          os-prober,
+         qml-module-qtquick-window2,
          qml-module-qtquick2,
          ${misc:Depends},
          ${shlibs:Depends}
