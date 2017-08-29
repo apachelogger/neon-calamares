@@ -21,9 +21,9 @@ Build-Depends: cmake,
                libparted-dev,
                libpolkit-qt5-1-dev,
                libpythonqt-dev,
-               libyaml-cpp-dev,
                libqt5svg5-dev,
                libqt5webkit5-dev,
+               libyaml-cpp-dev,
                os-prober,
                pkg-config,
                pkg-kde-tools,
@@ -44,7 +44,11 @@ Vcs-Git: https://anonscm.debian.org/git/pkg-kde/kde-extras/calamares.git
 
 Package: calamares
 Architecture: any
-Depends: os-prober, ${misc:Depends}, ${shlibs:Depends}
+Depends: os-prober,
+         qml-module-qtquick-window2,
+         qml-module-qtquick2,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Recommends: squashfs-tools
 Description: distribution-independent installer framework
  Calamares is a distribution-independent installer framework.
