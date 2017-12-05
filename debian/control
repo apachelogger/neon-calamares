@@ -52,7 +52,7 @@ Depends: os-prober,
          qml-module-qtquick2,
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: squashfs-tools
+Recommends: grub-efi-amd64-bin, grub-pc, konsole, squashfs-tools
 Description: distribution-independent installer framework
  Calamares is a distribution-independent installer framework.
  .
