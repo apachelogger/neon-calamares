@@ -1,14 +1,14 @@
 ---
-componentName:  netrunner-pinebook
+componentName:  netrunner-core
 
 strings:
-    productName:         Netrunner Pinebook
+    productName:         Netrunner Core
     shortProductName:    Core
-    version:             18.01.0-dev
-    shortVersion:        18.01
-    versionedName:       Pinebook
-    shortVersionedName:  Netrunner Pinebook 18.01
-    bootloaderEntryName: Netrunner
+    version:             1.0.0-dev
+    shortVersion:        1.0
+    versionedName:       Netrunner Core
+    shortVersionedName:  Netrunner Core 1.0
+    bootloaderEntryName: Netrunner Core
 
 images:
     productLogo:         "netrunner-core-logo.png"
