@@ -50,6 +50,7 @@ Architecture: any
 Depends: os-prober,
          qml-module-qtquick-window2,
          qml-module-qtquick2,
+         rsync,
          ${misc:Depends},
          ${shlibs:Depends}
 Recommends: grub-efi-amd64-bin, grub-pc, konsole, squashfs-tools
