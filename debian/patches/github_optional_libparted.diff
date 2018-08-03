@@ -1,0 +1,61 @@
+diff --git a/src/modules/welcome/CMakeLists.txt b/src/modules/welcome/CMakeLists.txt
+index a520aa080..42ce62beb 100644
+--- a/src/modules/welcome/CMakeLists.txt
++++ b/src/modules/welcome/CMakeLists.txt
+@@ -1,24 +1,20 @@
+ include_directories( ${PROJECT_BINARY_DIR}/src/libcalamaresui )
+ 
++find_package( LIBPARTED REQUIRED )
+ find_package( Qt5 ${QT_VERSION} CONFIG REQUIRED DBus Network )
+ 
+-find_package( LIBPARTED )
+-if ( LIBPARTED_FOUND )
+-    set( PARTMAN_SRC checker/partman_devices.c )
+-    set( CHECKER_LINK_LIBRARIES ${LIBPARTED_LIBRARY} )
+-else()
+-    set( PARTMAN_SRC )
+-    set( CHECKER_LINK_LIBRARIES )
+-    add_definitions( -DWITHOUT_LIBPARTED )
+-endif()
+-
+ include_directories( ${PROJECT_BINARY_DIR}/src/libcalamaresui )
+ 
+ set( CHECKER_SOURCES
+     checker/CheckItemWidget.cpp
+     checker/CheckerWidget.cpp
+     checker/RequirementsChecker.cpp
+-    ${PARTMAN_SRC}
++    checker/partman_devices.c
++)
++set( CHECKER_LINK_LIBRARIES
++    ${LIBPARTED_LIBRARY}
++    Qt5::DBus
++    Qt5::Network
+ )
+ 
+ calamares_add_plugin( welcome
+@@ -33,7 +29,5 @@ calamares_add_plugin( welcome
+     LINK_PRIVATE_LIBRARIES
+         calamaresui
+         ${CHECKER_LINK_LIBRARIES}
+-        Qt5::DBus
+-        Qt5::Network
+     SHARED_LIB
+ )
+diff --git a/src/modules/welcome/checker/RequirementsChecker.cpp b/src/modules/welcome/checker/RequirementsChecker.cpp
+index 4dbd977d1..f059cc914 100644
+--- a/src/modules/welcome/checker/RequirementsChecker.cpp
++++ b/src/modules/welcome/checker/RequirementsChecker.cpp
+@@ -313,12 +313,7 @@ RequirementsChecker::verdict() const
+ bool
+ RequirementsChecker::checkEnoughStorage( qint64 requiredSpace )
+ {
+-#ifdef WITHOUT_LIBPARTED
+-    cDebug() << "WARNING: RequirementsChecker is configured without libparted.";
+-    return false;
+-#else
+     return check_big_enough( requiredSpace );
+-#endif
+ }
+ 
+ 
