@@ -1,7 +1,7 @@
-diff --git a/src/modules/welcome/CMakeLists.txt b/src/modules/welcome/CMakeLists.txt
-index a520aa080..42ce62beb 100644
---- a/src/modules/welcome/CMakeLists.txt
-+++ b/src/modules/welcome/CMakeLists.txt
+Index: calamares/src/modules/welcome/CMakeLists.txt
+===================================================================
+--- calamares.orig/src/modules/welcome/CMakeLists.txt
++++ calamares/src/modules/welcome/CMakeLists.txt
 @@ -1,24 +1,20 @@
  include_directories( ${PROJECT_BINARY_DIR}/src/libcalamaresui )
  
@@ -42,16 +42,17 @@ index a520aa080..42ce62beb 100644
 -        Qt5::Network
      SHARED_LIB
  )
-diff --git a/src/modules/welcome/checker/RequirementsChecker.cpp b/src/modules/welcome/checker/RequirementsChecker.cpp
-index 4dbd977d1..f059cc914 100644
---- a/src/modules/welcome/checker/RequirementsChecker.cpp
-+++ b/src/modules/welcome/checker/RequirementsChecker.cpp
-@@ -313,12 +313,7 @@ RequirementsChecker::verdict() const
+Index: calamares/src/modules/welcome/checker/RequirementsChecker.cpp
+===================================================================
+--- calamares.orig/src/modules/welcome/checker/RequirementsChecker.cpp
++++ calamares/src/modules/welcome/checker/RequirementsChecker.cpp
+@@ -323,13 +323,7 @@ RequirementsChecker::verdict() const
  bool
  RequirementsChecker::checkEnoughStorage( qint64 requiredSpace )
  {
 -#ifdef WITHOUT_LIBPARTED
--    cDebug() << "WARNING: RequirementsChecker is configured without libparted.";
+-    Q_UNUSED( requiredSpace );
+-    cWarning() << "RequirementsChecker is configured without libparted.";
 -    return false;
 -#else
      return check_big_enough( requiredSpace );
