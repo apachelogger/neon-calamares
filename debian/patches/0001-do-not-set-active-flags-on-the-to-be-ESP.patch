@@ -1,0 +1,29 @@
+From 3330dee64096e06893e943f7753a4830295caa6e Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Tue, 7 Aug 2018 13:34:38 +0200
+Subject: [PATCH 1/2] do not set active flags on the to-be ESP
+
+having ESP as active flag AND then trying to set ESP means nothing is
+set since kpmcore will think ESP is already set (it is listed as active
+after all). this ultimately meant that nothing was set since there was
+no delta between the requested flags and the already active flags.
+---
+ src/modules/partition/core/PartitionActions.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/partition/core/PartitionActions.cpp b/src/modules/partition/core/PartitionActions.cpp
+index d654edf..d5a533f 100644
+--- a/src/modules/partition/core/PartitionActions.cpp
++++ b/src/modules/partition/core/PartitionActions.cpp
+@@ -141,7 +141,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, const QString& luksPass
+             FileSystem::Fat32,
+             firstFreeSector,
+             lastSector,
+-            PartitionTable::FlagEsp
++            PartitionTable::FlagNone
+         );
+         PartitionInfo::setFormat( efiPartition, true );
+         PartitionInfo::setMountPoint( efiPartition, gs->value( "efiSystemPartition" )
+-- 
+2.7.4
+

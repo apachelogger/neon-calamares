@@ -1,0 +1,28 @@
+From 0d250b950b303dd09ff4f6efb968d8d712c9cdd7 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Tue, 7 Aug 2018 13:36:09 +0200
+Subject: [PATCH 2/2] do not set boot flag on ESP
+
+ESP == boot. at best this is duplicated information, at worst kpmcore may
+implode if you try to set a boot flag since that is technically an MBR
+type flag.
+---
+ src/modules/partition/core/PartitionActions.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/partition/core/PartitionActions.cpp b/src/modules/partition/core/PartitionActions.cpp
+index d5a533f..9b47a2b 100644
+--- a/src/modules/partition/core/PartitionActions.cpp
++++ b/src/modules/partition/core/PartitionActions.cpp
+@@ -146,7 +146,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, const QString& luksPass
+         PartitionInfo::setFormat( efiPartition, true );
+         PartitionInfo::setMountPoint( efiPartition, gs->value( "efiSystemPartition" )
+                                                         .toString() );
+-        core->createPartition( dev, efiPartition, PartitionTable::FlagEsp | PartitionTable::FlagBoot );
++        core->createPartition( dev, efiPartition, PartitionTable::FlagEsp );
+         firstFreeSector = lastSector + 1;
+     }
+     else
+-- 
+2.7.4
+

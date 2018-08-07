@@ -1,1 +1,9 @@
 use-sudo-instead-of-pkexec
+
+# TEMPORARY hacks for kpmcore with auth support
+# follow up with stikonas to get this resolved in kpmcore
+# proper; it should:
+#  - handle FlagBoot to be synomious with FlagEsp on GPT
+#  - make sure active flags are rest when a partition is created
+0001-do-not-set-active-flags-on-the-to-be-ESP.patch
+0002-do-not-set-boot-flag-on-ESP.patch
