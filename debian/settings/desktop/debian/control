@@ -1,7 +1,7 @@
 Source: calamares-settings
 Section: devel
 Priority: optional
-Maintainer: Rohan Garg <rohan@kde.org>
+Maintainer: KDE Neon <neon@kde.org>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.6
 Homepage: https://github.com/netrunner-core/calamares-core
