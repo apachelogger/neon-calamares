@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Jonathan Carter <jcc@debian.org>
 Build-Depends: cmake,
                cryptsetup,
-               debhelper (>= 10),
+               debhelper (>= 11),
                extra-cmake-modules,
                gettext,
                libkf5kio-dev,
