@@ -1,0 +1,3 @@
+debian/settings/pinebook/etc/* etc/
+debian/settings/pinebook/lib/* lib/
+debian/settings/pinebook/usr/* usr/
