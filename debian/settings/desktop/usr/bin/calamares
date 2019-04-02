@@ -6,4 +6,14 @@ export KDE_FULL_SESSION=TRUE
 export KDE_SESSION_VERSION=5
 export QT_QPA_PLATFORMTHEME=kde
 
-exec /usr/bin/_neon.calamares "$@"
+export XDG_DATA_DIRS=/usr/share/clamares-settings:$XDG_DATA_DIRS:/usr/share
+export XDG_CONFIG_DIRS=/usr/share/neon/clamares-settings:$XDG_CONFIG_DIRS:/etc/xdg
+
+# Pinebook is not installed by default and only available on arm. Stack it on
+# top when it is available.
+if [ -d /usr/share/clamares-settings-pinebook ]; then
+    export XDG_DATA_DIRS=/usr/share/clamares-settings-pinebook:$XDG_DATA_DIRS
+    export XDG_CONFIG_DIRS=/usr/share/clamares-settings-pinebook:$XDG_CONFIG_DIRS
+fi
+
+exec /usr/bin/_neon.calamares --xdg-config "$@"
